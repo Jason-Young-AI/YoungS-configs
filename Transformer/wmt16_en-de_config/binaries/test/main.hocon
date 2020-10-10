@@ -1,0 +1,12 @@
+task = "seq2seq"
+tester = "seq2seq"
+device = "GPU"
+
+output_directory = "Outputs/WMT16_En-De/newstest2013/"
+checkpoint_directory = "Checkpoints/WMT16_En-De/"
+
+logger = {
+    name = "test_wmt16_en-de"
+    path = "test_wmt16_en-de.log"
+    off = False
+}

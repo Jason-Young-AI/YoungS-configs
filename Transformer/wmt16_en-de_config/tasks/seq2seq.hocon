@@ -1,0 +1,51 @@
+name = seq2seq
+
+language = {
+    source = 'en'
+    target = 'de'
+}
+
+vocabularies = {
+    share = True
+    size_limit = {
+        source = 32768
+        target = 32768
+    }
+}
+
+raw_data = {
+    training = {
+        source = "Corpora/wmt16.en-de.en"
+        target = "Corpora/wmt16.en-de.de"
+    }
+    validation = {
+        source = "Corpora/newstest2013.en-de.en"
+        target = "Corpora/newstest2013.en-de.de"
+    }
+}
+
+datasets = {
+    training = "Datasets/wmt16.en-de.dataset"
+    validation = "Datasets/newstest2013.en-de.dataset"
+    vocabularies = "Datasets/wmt16.en-de.vocab"
+}
+
+training_batches = {
+    batch_size = 4096
+    batch_type = "token"
+    accumulate_number = 2
+    mode = "shuffle"
+    filter = {
+        source = [0, 100]
+        target = [0, 100]
+    }
+}
+
+validation_batches = {
+    batch_size = 32
+    batch_type = "sentence"
+}
+
+number_worker = 16
+work_amount = 300000
+shard_size = 1000000

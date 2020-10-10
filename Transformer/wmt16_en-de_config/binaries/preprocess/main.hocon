@@ -1,0 +1,9 @@
+task = "seq2seq"
+
+random_seed = 1234
+
+logger = {
+    name = "preprocess_wmt16_en-de"
+    path = "preprocess_wmt16_en-de.log"
+    off = False
+}
