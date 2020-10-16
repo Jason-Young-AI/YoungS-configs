@@ -3,7 +3,7 @@ task = "seq2seq"
 random_seed = 1234
 
 logger = {
-    name = "preprocess_wmt16_en-de"
-    path = "preprocess_wmt16_en-de.log"
+    name = "wmt16_en-de_preprocess"
+    path = "wmt16_en-de_preprocess.log"
     off = False
 }
