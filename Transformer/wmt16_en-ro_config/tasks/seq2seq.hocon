@@ -33,8 +33,9 @@ datasets = {
 training_batches = {
     batch_size = 4096
     batch_type = "token"
-    accumulate_number = 2
-    mode = "shuffle"
+    dock_size = 8192
+    export_volume = 2
+    shuffle = True
     filter = {
         source = [0, 200]
         target = [0, 200]
@@ -47,5 +48,5 @@ validation_batches = {
 }
 
 number_worker = 16
-work_amount = 40000
+work_amount = 300000
 shard_size = 1000000
