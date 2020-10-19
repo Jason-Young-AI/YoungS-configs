@@ -15,5 +15,5 @@ searcher = {
 
 source = "Corpora/newstest2013.en-de.en"
 target = "Corpora/Gold/newstest2013.en-de.de"
-batch_size = 32
+batch_size = 80
 batch_type = "sentence"
