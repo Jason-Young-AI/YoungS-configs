@@ -30,6 +30,9 @@
 
 #### WMT16 En-Ro
 
+[ [Configurations](https://github.com/Jason-Young-AI/YoungNMT-configs/tree/master/Transformer/wmt16_en-ro) ]
+[ [Best Model](https://1drv.ms/u/s!AkKq-gTqmfT0jTmKAZaeI0hLSJNh?e=JpaVES) ]
+
 Here are the results of the experiment of WMT16 English to Romania, the best model is obtained at training step **15,000**:
 
   En-Ro                 | MultiBLEU | SacreBLEU
@@ -37,11 +40,11 @@ Here are the results of the experiment of WMT16 English to Romania, the best mod
   newsdev2016  (valid)  | 33.41     | - 
   newstest2016 (test)   | 32.88     | - 
 
-The configurations can be obtained [here](https://github.com/Jason-Young-AI/YoungNMT-configs/tree/master/Transformer/wmt16_en-ro).
-The best model can be downloaded at [here](https://1drv.ms/u/s!AkKq-gTqmfT0jTmKAZaeI0hLSJNh?e=JpaVES)
-
 
 #### WMT16 En-De
+
+[ [Configurations](https://github.com/Jason-Young-AI/YoungNMT-configs/tree/master/Transformer/wmt16_en-de) ]
+[ [Best Model](https://1drv.ms/u/s!AkKq-gTqmfT0jToWKiBxtsNKd2xZ?e=bsMz1l) ]
 
 Here are the results of the experiment of WMT16 English to German, the best model is obtained at training step **174,000**:
 
@@ -49,6 +52,5 @@ Here are the results of the experiment of WMT16 English to German, the best mode
   ----------------------|-----------|----------
   newstest2013 (valid)  | 26.37     | - 
   newstest2014 (test)   | 27.58     | - 
-
-The configurations can be obtained [here](https://github.com/Jason-Young-AI/YoungNMT-configs/tree/master/Transformer/wmt16_en-de).
-The best model can be downloaded at [here](https://1drv.ms/u/s!AkKq-gTqmfT0jToWKiBxtsNKd2xZ?e=bsMz1l)
+  
+  
