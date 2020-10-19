@@ -41,6 +41,10 @@
         "off": false,
         "path": "train_wmt16_en-ro.log"
       },
+      "mix_precision": {
+        "on": false,
+        "optimization_level": "O0"
+      },
       "model": "transformer_base",
       "optimizer": {
         "beta1": 0.9,
@@ -125,9 +129,10 @@
       },
       "shard_size": 1000000,
       "training_batches": {
-        "accumulate_number": 2,
         "batch_size": 4096,
         "batch_type": "token",
+        "dock_size": 8192,
+        "export_volume": 2,
         "filter": {
           "source": [
             0,
@@ -138,7 +143,7 @@
             200
           ]
         },
-        "mode": "shuffle"
+        "shuffle": true
       },
       "validation_batches": {
         "batch_size": 32,
@@ -151,7 +156,7 @@
           "target": 32768
         }
       },
-      "work_amount": 40000
+      "work_amount": 300000
     }
   },
   "testers": {
