@@ -155,7 +155,7 @@ tasks {
         target = 32768
       }
     }
-    work_amount = 300000
+    work_amount = 40000
   }
 }
 testers {

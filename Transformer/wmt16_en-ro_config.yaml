@@ -126,7 +126,7 @@ tasks:
       size_limit: 
         source: 32768
         target: 32768
-    work_amount: 300000
+    work_amount: 40000
 testers: 
   seq2seq: 
     batch_size: 80
