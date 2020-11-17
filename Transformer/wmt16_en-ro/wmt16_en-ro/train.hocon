@@ -1,0 +1,62 @@
+checkpoint = ""
+
+task = {
+    name = "seq2seq"
+    args = { include "task.hocon" }
+}
+model = {
+    name = "transformer"
+    args = { include "model.hocon"}
+}
+
+trainer = {
+    name = "seq2seq"
+    args = { include "trainer.hocon" }
+}
+scheduler = {
+    name = "noam"
+    args = { include "scheduler.hocon" }
+}
+optimizer = {
+    name = "adam"
+    args = { include "optimizer.hocon" }
+}
+
+reset_trainer = False
+reset_scheduler = False
+reset_optimizer = False
+
+logger = {
+    name = "train_seq2seq_wmt16enro"
+    path = "train_seq2seq_wmt16enro.log"
+    off = False
+    console_report = True
+}
+
+visualizer = {
+    name = "seq2seq wmt16enro"
+    path = "seq2seq_wmt16enro.vis"
+    off = True
+    server = "www.young-leigh.love"
+    port = 6789
+    username = "Guest_Visdom"
+    password = "Happy_Visual_001"
+    offline = True
+    overwrite = True
+}
+
+distribution = {
+    device = "GPU"
+    master_ip = "127.0.0.1"
+    master_port = "12345"
+    world_size = 8
+    ranks = [0, 1, 2, 3, 4, 5, 6, 7]
+    workshop_capacity = 60
+}
+
+mix_precision {
+    on = False
+    optimization_level = "O0"
+}
+
+random_seed = 1234

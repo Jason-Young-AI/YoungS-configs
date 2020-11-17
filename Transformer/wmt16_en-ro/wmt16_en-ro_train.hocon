@@ -1,0 +1,157 @@
+checkpoint = ""
+distribution {
+  device = "GPU"
+  master_ip = "127.0.0.1"
+  master_port = "12345"
+  ranks = [
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+  ]
+  workshop_capacity = 60
+  world_size = 8
+}
+logger {
+  console_report = true
+  name = "train_seq2seq_wmt16enro"
+  off = false
+  path = "train_seq2seq_wmt16enro.log"
+}
+mix_precision {
+  on = false
+  optimization_level = "O0"
+}
+model {
+  args {
+    decoder {
+      attention_dropout_probability = 0.1
+      dimension = 512
+      dropout_probability = 0.1
+      feedforward_dimension = 2048
+      feedforward_dropout_probability = 0.1
+      head_number = 8
+      layer_number = 6
+      normalize_position = "before"
+    }
+    dimension = 512
+    encoder {
+      attention_dropout_probability = 0.1
+      dimension = 512
+      dropout_probability = 0.1
+      feedforward_dimension = 2048
+      feedforward_dropout_probability = 0.1
+      head_number = 8
+      layer_number = 6
+      normalize_position = "before"
+    }
+    share_dec_io_embeddings = true
+    share_enc_dec_embeddings = true
+  }
+  name = "transformer"
+}
+optimizer {
+  args {
+    beta1 = 0.9
+    beta2 = 0.98
+    epsilon = 1e-09
+    learning_rate = 0.001
+  }
+  name = "adam"
+}
+random_seed = 1234
+reset_optimizer = false
+reset_scheduler = false
+reset_trainer = false
+scheduler {
+  args {
+    warmup_step = 4000
+  }
+  name = "noam"
+}
+task {
+  args {
+    datasets {
+      training = "Datasets/seq2seq_wmt16enro.train.dataset"
+      validation = "Datasets/seq2seq_wmt16enro.valid.dataset"
+      vocabularies = "Datasets/seq2seq_wmt16enro.vocab"
+    }
+    language {
+      source = "'en'"
+      target = "'ro'"
+    }
+    number_worker = 16
+    raw_data {
+      training {
+        source = "Corpora/wmt16.en-ro.en"
+        target = "Corpora/wmt16.en-ro.ro"
+      }
+      validation {
+        source = "Corpora/newsdev2016.en-ro.en"
+        target = "Corpora/newsdev2016.en-ro.ro"
+      }
+    }
+    shard_size = 40000
+    training_batches {
+      batch_size = 4096
+      batch_type = "token"
+      dock_size = 8192
+      export_volume = 1
+      filter {
+        source = [
+          0
+          200
+        ]
+        target = [
+          0
+          200
+        ]
+      }
+      shuffle = true
+    }
+    validation_batches {
+      batch_size = 32
+      batch_type = "sentence"
+    }
+    vocabularies {
+      share = true
+      size_limit {
+        source = 32768
+        target = 32768
+      }
+    }
+    work_amount = 1000000
+  }
+  name = "seq2seq"
+}
+trainer {
+  args {
+    checkpoints {
+      directory = "Checkpoints/Seq2Seq/WMT16EnRo"
+      keep_number = 100
+      name = "seq2seq_wmt16enro"
+    }
+    label_smoothing_percent = 0.1
+    life_cycle = 30000
+    normalization_type = "token"
+    report_period = 1
+    training_period = 1000
+    validation_period = 1000
+  }
+  name = "seq2seq"
+}
+visualizer {
+  name = "seq2seq wmt16enro"
+  off = true
+  offline = true
+  overwrite = true
+  password = "Happy_Visual_001"
+  path = "seq2seq_wmt16enro.vis"
+  port = 6789
+  server = "www.young-leigh.love"
+  username = "Guest_Visdom"
+}

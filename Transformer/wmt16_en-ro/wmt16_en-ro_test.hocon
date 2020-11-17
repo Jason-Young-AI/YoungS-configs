@@ -1,0 +1,85 @@
+checkpoint_directory = "Checkpoints/Seq2Seq/WMT16EnRo"
+device = "GPU"
+logger {
+  console_report = true
+  name = "test_seq2seq_wmt16enro"
+  off = false
+  path = "test_seq2seq_wmt16enro.log"
+}
+output_directory = "Outputs/Seq2Seq/WMT16EnRo"
+task {
+  args {
+    datasets {
+      training = "Datasets/seq2seq_wmt16enro.train.dataset"
+      validation = "Datasets/seq2seq_wmt16enro.valid.dataset"
+      vocabularies = "Datasets/seq2seq_wmt16enro.vocab"
+    }
+    language {
+      source = "'en'"
+      target = "'ro'"
+    }
+    number_worker = 16
+    raw_data {
+      training {
+        source = "Corpora/wmt16.en-ro.en"
+        target = "Corpora/wmt16.en-ro.ro"
+      }
+      validation {
+        source = "Corpora/newsdev2016.en-ro.en"
+        target = "Corpora/newsdev2016.en-ro.ro"
+      }
+    }
+    shard_size = 40000
+    training_batches {
+      batch_size = 4096
+      batch_type = "token"
+      dock_size = 8192
+      export_volume = 1
+      filter {
+        source = [
+          0
+          200
+        ]
+        target = [
+          0
+          200
+        ]
+      }
+      shuffle = true
+    }
+    validation_batches {
+      batch_size = 32
+      batch_type = "sentence"
+    }
+    vocabularies {
+      share = true
+      size_limit {
+        source = 32768
+        target = 32768
+      }
+    }
+    work_amount = 1000000
+  }
+  name = "seq2seq"
+}
+tester {
+  args {
+    batch_size = 32
+    batch_type = "sentence"
+    beam_searcher {
+      beam_size = 4
+      max_length = 200
+      min_length = 1
+      n_best = 1
+      penalty {
+        alpha = 0.6
+        beta = 0.0
+      }
+    }
+    bpe_symbol = "@@ "
+    remove_bpe = true
+    source = "Corpora/newsdev2016.en-ro.en"
+    target = "Corpora/Gold/newsdev2016.en-ro.ro"
+  }
+  name = "seq2seq"
+}
