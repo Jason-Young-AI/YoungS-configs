@@ -1,8 +1,6 @@
-name = seq2seq
-
 language = {
-    source = 'en'
-    target = 'de'
+    source = "en"
+    target = "de"
 }
 
 vocabularies = {
@@ -11,6 +9,7 @@ vocabularies = {
         source = 32768
         target = 32768
     }
+    save_readable = True
 }
 
 raw_data = {
@@ -22,19 +21,23 @@ raw_data = {
         source = "Corpora/newstest2013.en-de.en"
         target = "Corpora/newstest2013.en-de.de"
     }
+    testing = {
+        source = "Corpora/newstest2013.en-de.en"
+        target = "Corpora/newstest2013.en-de.de"
+    }
 }
 
 datasets = {
-    training = "Datasets/wmt16.en-de.dataset"
-    validation = "Datasets/newstest2013.en-de.dataset"
-    vocabularies = "Datasets/wmt16.en-de.vocab"
+    training = "Datasets/wmt16ende.train.dataset"
+    validation = "Datasets/wmt16ende.valid.dataset"
+    vocabularies = "Datasets/wmt16ende.vocab"
 }
 
 training_batches = {
     batch_size = 4096
     batch_type = "token"
     dock_size = 8192
-    export_volume = 1
+    export_volume = 2
     shuffle = True
     filter = {
         source = [0, 200]
@@ -43,10 +46,15 @@ training_batches = {
 }
 
 validation_batches = {
-    batch_size = 32
+    batch_size = 50
+    batch_type = "sentence"
+}
+
+testing_batches = {
+    batch_size = 50
     batch_type = "sentence"
 }
 
 number_worker = 16
-work_amount = 300000
-work_amount = 1000000
+shard_size = 1000000
+work_amount = 282000

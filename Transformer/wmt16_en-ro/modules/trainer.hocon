@@ -5,7 +5,7 @@ training_period = 1000
 validation_period = 1000
 label_smoothing_percent = 0.1
 checkpoints = {
-    name = "seq2seq_wmt16enro"
-    directory = "Checkpoints/Seq2Seq/WMT16EnRo"
+    name = "wmt16enro_transformer"
+    directory = "Checkpoints"
     keep_number = 100
 }

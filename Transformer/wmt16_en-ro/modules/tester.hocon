@@ -1,0 +1,20 @@
+bpe_symbol = "@@ "
+remove_bpe = True
+dehyphenate = False
+beam_searcher = {
+    beam_size = 4
+    n_best = 1
+    min_length = 1
+    max_length = 200
+    penalty = {
+        alpha = 0.6
+        beta = 0.0
+    }
+}
+
+reference_path = "Corpora/Gold/newsdev2016.en-ro.ro"
+
+outputs = {
+    name = "wmt16enro_transformer"
+    directory = "Outputs"
+}

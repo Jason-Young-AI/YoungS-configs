@@ -1,3 +1,0 @@
-transformer_base = {
-    include file("transformer/base.hocon") 
-}
