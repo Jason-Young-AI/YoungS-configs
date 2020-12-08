@@ -7,11 +7,11 @@ factory = {
     args = { include "modules/factory.hocon" }
 }
 model = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/model.hocon" }
 }
 trainer = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/trainer.hocon" }
 }
 scheduler = {
@@ -23,7 +23,7 @@ optimizer = {
     args = { include "modules/optimizer.hocon" }
 }
 tester = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/tester.hocon" }
 }
 
@@ -32,15 +32,15 @@ reset_scheduler = False
 reset_optimizer = False
 
 logger = {
-    name = "wmt16ende_train_transformer"
-    path = "wmt16ende_train_transformer.log"
+    name = "wmt16enro_train_fast-wait-k"
+    path = "wmt16enro_train_fast-wait-k.log"
     off = False
     console_report = True
 }
 
 visualizer = {
-    name = "wmt16ende transformer"
-    path = "wmt16ende_transformer.vis"
+    name = "wmt16enro fast-wait-k"
+    path = "wmt16enro_fast-wait-k.vis"
     off = True
     server = "127.0.0.1"
     port = 6789
@@ -54,8 +54,8 @@ distribution = {
     device = "GPU"
     master_ip = "127.0.0.1"
     master_port = "12345"
-    world_size = 4
-    ranks = [0, 1, 2, 3]
+    world_size = 3
+    ranks = [0, 1, 2]
     workshop_capacity = 60
 }
 

@@ -4,7 +4,7 @@ device = "GPU"
 number_worker = 4
 
 checkpoints = {
-    name = "wmt16ende_transformer"
+    name = "wmt16ende_fast-wait-k"
     directory = "Checkpoints"
 }
 
@@ -13,13 +13,13 @@ factory = {
     args = { include "modules/factory.hocon" }
 }
 tester = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/tester.hocon" }
 }
 
 logger = {
-    name = "wmt16ende_test_transformer"
-    path = "wmt16ende_test_transformer.log"
+    name = "wmt16ende_test_fast-wait-k"
+    path = "wmt16ende_test_fast-wait-k.log"
     off = False
     console_report = True
 }

@@ -7,11 +7,11 @@ factory = {
     args = { include "modules/factory.hocon" }
 }
 model = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/model.hocon" }
 }
 trainer = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/trainer.hocon" }
 }
 scheduler = {
@@ -23,7 +23,7 @@ optimizer = {
     args = { include "modules/optimizer.hocon" }
 }
 tester = {
-    name = "transformer"
+    name = "fast_wait_k"
     args = { include "modules/tester.hocon" }
 }
 
@@ -32,15 +32,15 @@ reset_scheduler = False
 reset_optimizer = False
 
 logger = {
-    name = "wmt16ende_train_transformer"
-    path = "wmt16ende_train_transformer.log"
+    name = "wmt16ende_train_fast-wait-k"
+    path = "wmt16ende_train_fast-wait-k.log"
     off = False
     console_report = True
 }
 
 visualizer = {
-    name = "wmt16ende transformer"
-    path = "wmt16ende_transformer.vis"
+    name = "wmt16ende fast-wait-k"
+    path = "wmt16ende_fast-wait-k.vis"
     off = True
     server = "127.0.0.1"
     port = 6789
