@@ -9,6 +9,10 @@ vocabularies = {
         source = 32768
         target = 32768
     }
+    special_tokens = {
+        source = []
+        target = []
+    }
     save_readable = True
 }
 
